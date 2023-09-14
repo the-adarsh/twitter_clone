@@ -1,0 +1,38 @@
+extends layouts/login-layout.pug
+
+block content
+    .loginContainer
+        h1  SIGN UP
+        form#registerform(method="post", onsubmit = "event.preventDefault(); validateForm();")
+
+            p.errorMessage #{errorMessage}
+            input(type="text", name="firstName", placeholder='First Name', value=firstName required="")
+            input(type="text", name="lastName", placeholder='Last Name', value=lastName required="")
+            input(type="text", name="username", placeholder='Username', value=username required="")
+            input(type="text", name="email", placeholder='Email', value=email required="")
+            input#password(type="password", name="password" placeholder='Password',required="")
+            input#passwordConf(type="password", name="passwordConf", placeholder='Confirm Password',required="")
+            input(type="submit", value="Register")
+            .alert.alert-danger(id='alertMessage', role='alert', style='display: none;')
+                | Passwords do not match. Please try again.
+        a(href="/login") Already Have An Account ? Login Here!
+
+    script.
+        var passwordField = document.getElementById("password")
+        var passwordConfirmField = document.getElementById("passwordConf")
+        var form = document.getElementById("registerform")
+
+        function validateForm() {
+            if (passwordField.value !== passwordConfirmField.value) {
+                alertMessage.style.display = 'block'; 
+                setTimeout(function() {
+                    alertMessage.style.display = 'none';
+                    window.location.reload(); 
+                }, 1200);
+                return false;
+            }
+            else {
+                alertMessage.style.display = 'none'; 
+                form.submit();
+            }
+        }
