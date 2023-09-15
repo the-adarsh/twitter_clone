@@ -8,9 +8,12 @@ const UserSchema = new Schema({
     username:{type:String, required:true, trim:true, unique:true},
     email:{type:String, required:true, trim:true, unique:true},
     password:{type:String, required:true},
-    profilepic:{type:String, default:"/images/Default-Profile-Picture.png"},
-    likes: [{type:Schema.Types.ObjectId, ref: "Post"}]
-}, {timestamps: true});
+    profilePic:{type:String, default:"/images/Default-Profile-Picture.png"},
+    likes: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+    retweets: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+    following: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    followers: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+}, { timestamps: true });
 
-var User = mongoose.model('User',UserSchema);
+var User = mongoose.model('User', UserSchema);
 module.exports = User;

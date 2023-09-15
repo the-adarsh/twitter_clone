@@ -15,7 +15,7 @@ block content
             input(type="submit", value="Register")
             .alert.alert-danger(id='alertMessage', role='alert', style='display: none;')
                 | Passwords do not match. Please try again.
-        a(href="/login") Already Have An Account ? Login Here!
+        a(href="/login", class='--bs-light-border-subtle', style='color: black') Already Have An Account ? Login Here!
 
     script.
         var passwordField = document.getElementById("password")
