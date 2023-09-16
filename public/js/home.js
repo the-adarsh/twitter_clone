@@ -16,8 +16,6 @@ function outputPosts(results, container){
         container.append("<span class='noResults'>NOTHING TO SHOW!</span>");
     }
 }
-
-
 // $(document).ready(() => {
 //     $.get("/api/posts", { followingOnly: true }, results => {
 //         outputPosts(results, $(".postsContainer"));
